@@ -4,17 +4,19 @@
 [1、根据经纬度获取位置详情](#1根据经纬度获取位置详情)<br/>
 [2、获取食品分类列表](#2获取食品分类列表)<br/>
 [3、根据经纬度获取商铺列表](#3根据经纬度获取商铺列表)<br/>
-[4、获取一次性验证码](#5获取一次性验证码)<br/>
-[5、发送短信验证码](#7发送短信验证码)<br/>
+[4、获取一次性验证码](#4获取一次性验证码)<br/>
+[5、发送短信验证码](#5发送短信验证码)<br/>
 [6、用户名密码登陆](#6用户名密码登陆)<br/>
-[7、手机号验证码登陆](#8手机号验证码登陆)<br/>
-[8、根据会话获取用户信息](#9根据会话获取用户信息)<br/>
-
+[7、手机号验证码登陆](#7手机号验证码登陆)<br/>
+[8、根据会话获取用户信息](#8根据会话获取用户信息)<br/>
+[9、用户登出](#9用户登出)<br/>
+[10、自动登录](#10自动登录)<br/>
+[11、根据经纬度和关键字查询商铺列表](#12根据经纬度和关键字查询商铺列表)<br/>
 
 ## 1、根据经纬度获取位置详情
      
 ### 请求URL：
-	http://localhost:5000/position/:geohash
+	http://localhost:4000/position/:geohash
 
 ### 示例：
 [http://localhost:5000/position/40.10038,116.36867](http://localhost:5000/position/40.10038,116.36867)
@@ -44,7 +46,7 @@
 ## 2、获取食品分类列表
 
 ### 请求URL：
-	http://localhost:5000/index_category
+	http://localhost:4000/index_category
 
 ### 请求方式：
 	GET
@@ -85,7 +87,7 @@
 ## 3、根据经纬度获取商铺列表
 
 ### 请求URL：
-	http://localhost:5000/shops
+	http://localhost:4000/shops
 
 ### 示例：
 [http://localhost:5000/shops?latitude=40.10038&longitude=116.36867](http://localhost:5000/shops?latitude=40.10038&longitude=116.36867)
@@ -182,7 +184,7 @@
 ## 4、获取一次性验证码
      
 ### 请求URL：
-	http://localhost:5000/captcha
+	http://localhost:4000/captcha
 
 ### 请求方式：
 	GET
@@ -205,7 +207,7 @@
 ## 5、发送短信验证码
      
 ### 请求URL：
-	http://localhost:5000/sendcode
+	http://localhost:4000/sendcode
 
 ### 示例：
 [http://localhost:5000/sendcode?phone=13716962779](http://localhost:5000/sendcode?phone=13716962779)
@@ -239,7 +241,7 @@
 ## 6、用户名密码登陆
      
 ### 请求URL：
-	http://localhost:5000/login_pwd
+	http://localhost:4000/login_pwd
 
 ### 请求方式：
 	POST
@@ -271,7 +273,7 @@
 ## 7、手机号验证码登陆
      
 ### 请求URL：
-	http://localhost:5000/login_sms
+	http://localhost:4000/login_sms
 
 ### 请求方式：
 	POST
@@ -303,7 +305,7 @@
 ## 8、根据会话获取用户信息
 
 #### 请求URL：
-	http://localhost:5000/userinfo
+	http://localhost:4000/userinfo
 
 #### 请求方式：
 	GET
@@ -324,89 +326,17 @@
       }
 
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-8## 7、手机号验证码登陆
-     
-### 请求URL：
-	http://localhost:5000/login_sms
-
-### 请求方式：
-	POST
-
-### 参数类型: 请求体
-
-	|参数		|是否必选 |类型     |说明
-	|phone       |Y       |string   |手机号
-	|code        |Y       |string   |验证码
-
-### 返回示例：
-    * 登陆成功
-      {
-        "code": 0,
-        "data": {
-          "_id": "5a9cd9c6ad5b2d34d42b385d",
-          "phone": "13716962779",
-          "token": "abcdxx"
-        }
-      }
-    * 登陆失败
-      {
-        "code": 1,
-        "msg": "手机号或验证码不正确"
-      }
-      
-### 9、根据会话获取用户信息
+## 9、用户登出
 
 #### 请求URL：
-	http://localhost:5000/userinfo
+	http://localhost:4000/logout
 
 #### 请求方式：
 	GET
 
 #### 返回示例：
-	* 获取成功
-      {
-        "code": 0,
-        "data": {
-          "_id": "5a9cd9c6ad5b2d34d42b385d",
-          "phone": "13716962779"
-        }
-      }
-    * 获取失败
-      {
-        "code": 1,
-        "msg": "请先登陆"
-      }
-
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+  {
+    "code": 0
+  }
       
       
